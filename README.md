@@ -4,6 +4,8 @@ commands:
 ```
 $ udevadm monitor # basic events
 $ udevadm monitor --property # "verbose" version
+
+$ udevadm info -a -n /dev/sdb1 # detailed output for device: sdb1
 ```
 
 ## Device renaming
@@ -69,4 +71,12 @@ if [[ $VGA_connected ]]; then
 else
   xrandr --output VGA1 --auto
 fi
+```
+
+## Run scripts for USBs
+
+/etc/udev/rules.d/81-usbdrive.rules:
+```
+# Run a script when a known USB drive is plugged in.
+ACTION=="add", SUBSYSTEM=="usb", ATTRS{serial}=="1112222333444455", SYMLINK+="my-usb", RUN+="/usr/local/sbin/script.sh"
 ```
