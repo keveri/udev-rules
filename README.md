@@ -11,7 +11,6 @@ $ udevadm monitor --property # "verbose" version
 Look up the MAC addressses for your devices:
 ```
 $ ifconfig
-
 ```
 
 /etc/udev/rules.d/10-network-interface-names.rules
